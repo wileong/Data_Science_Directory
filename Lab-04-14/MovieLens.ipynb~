@@ -1,0 +1,271 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# MovieLens\n",
+    "\n",
+    "[MovieLens](http://www.movielens.org/) is a website where users can submit ratings for movies that they watch and receive recommendations for other movies they might enjoy. The data is collected and made publicly available for research. We will be working with a data set of 1 million user ratings of movies. You can find this data set and even larger ones at http://grouplens.org/datasets/movielens/."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "nbgrader": {
+     "grade": false,
+     "grade_id": "header_question",
+     "locked": true,
+     "solution": false
+    }
+   },
+   "source": [
+    "## Reading in the Data\n",
+    "\n",
+    "Note that the data consists of three data frames: one with information about the users, another containing the ratings, and yet another with information about the movies. See the readme file (/data/movielens/README) for more information."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {
+    "collapsed": false,
+    "nbgrader": {
+     "grade": false,
+     "grade_id": "header",
+     "locked": true,
+     "solution": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "\n",
+    "unames = ['user_id', 'gender', 'age', 'occupation', 'zip']\n",
+    "users = pd.read_table('/data/movielens/users.dat', sep='::', header=None,\n",
+    "                      names=unames, engine=\"python\")\n",
+    "\n",
+    "rnames = ['user_id', 'movie_id', 'rating', 'timestamp']\n",
+    "ratings = pd.read_table('/data/movielens/ratings.dat', sep='::', header=None,\n",
+    "                        names=rnames, engine=\"python\")\n",
+    "\n",
+    "mnames = ['movie_id', 'title', 'genres']\n",
+    "movies = pd.read_table('/data/movielens/movies.dat', sep='::', header=None,\n",
+    "                       names=mnames, engine=\"python\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "nbgrader": {
+     "grade": false,
+     "grade_id": "top_movies_question",
+     "locked": true,
+     "solution": false
+    }
+   },
+   "source": [
+    "## Question 1\n",
+    "\n",
+    "Develop a way to rank movies. Why is it not a good idea to simply sort the movies by average rating? (You may want to try calculating this first.) Then, explain your methodology and use it to produce a list of the Top 10 movies of all time."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true,
+    "nbgrader": {
+     "grade": true,
+     "grade_id": "top_movies",
+     "locked": false,
+     "points": 20,
+     "solution": true
+    }
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "nbgrader": {
+     "grade": true,
+     "grade_id": "top_movies_text",
+     "locked": false,
+     "solution": true
+    }
+   },
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "nbgrader": {
+     "grade": false,
+     "grade_id": "male_female_question",
+     "locked": true,
+     "solution": false
+    }
+   },
+   "source": [
+    "## Question 2\n",
+    "\n",
+    "Restrict to movies with at least 200 ratings. For each movie, calculate the difference between the average male rating and the average female rating. Based on these differences between average male ratings and average female ratings, what movies were the most male-friendly? What movies were the most female-friendly?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true,
+    "nbgrader": {
+     "grade": true,
+     "grade_id": "male_female",
+     "locked": false,
+     "points": 20,
+     "solution": true
+    }
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "nbgrader": {
+     "grade": true,
+     "grade_id": "male_female_text",
+     "locked": false,
+     "solution": true
+    }
+   },
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "nbgrader": {
+     "grade": false,
+     "grade_id": "genres_question",
+     "locked": true,
+     "solution": false
+    }
+   },
+   "source": [
+    "## Question 3\n",
+    "\n",
+    "Calculate the average rating by genre. Note that a movie can belong to multiple genres. You will have to write some code that parses the `genres` column of the `movies` table. What genre had the highest average rating? What genre had the lowest?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true,
+    "nbgrader": {
+     "grade": true,
+     "grade_id": "genres",
+     "locked": false,
+     "points": 30,
+     "solution": true
+    }
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "nbgrader": {
+     "grade": true,
+     "grade_id": "genres_text",
+     "locked": false,
+     "solution": true
+    }
+   },
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "nbgrader": {
+     "grade": false,
+     "grade_id": "open_ended_question",
+     "locked": true,
+     "solution": false
+    }
+   },
+   "source": [
+    "## Question 4\n",
+    "\n",
+    "Formulate a question of your own that you can answer using this MovieLens data. State clearly what your question is and what your findings are. Bonus points are available if you find something interesting!\n",
+    "\n",
+    "**Tip:** You may find the `occupation` column of `users` to be a rich source of interesting questions. See the README file (/data/movielens/README) for information about how `occupation` is coded in the data."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true,
+    "nbgrader": {
+     "grade": true,
+     "grade_id": "open_ended",
+     "locked": false,
+     "points": 20,
+     "solution": true
+    }
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "nbgrader": {
+     "grade": true,
+     "grade_id": "open_ended_text",
+     "locked": false,
+     "solution": true
+    }
+   },
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Submitting this Lab\n",
+    "\n",
+    "Now, restart your kernel and re-run your entire notebook from beginning to end. Make sure there are no errors or bugs. When you have verified this, open the Terminal on JupyterHub and type \n",
+    "\n",
+    "`nbgrader submit Lab-04-14 --course dlsun`\n",
+    "\n",
+    "to submit this lab."
+   ]
+  }
+ ],
+ "metadata": {
+  "celltoolbar": "Create Assignment",
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.4.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 0
+}
